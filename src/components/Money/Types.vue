@@ -13,14 +13,10 @@
   import Vue from 'vue';
   import {Component} from 'vue-property-decorator';
 
-  @Component({
-    props: {
-      propMessage: String
-    }
-  })
+  @Component
   export default class Types extends Vue {
     type = '-'; // "-"代表支出，"+"代表收入
-    selectType(type: string) { // type只能是 - 或 +
+    selectType(type: string) {
       if (type !== '-' && type !== '+') {
         throw new Error('type is unknown');
       }
@@ -28,26 +24,6 @@
     }
   }
 
-  // export default {
-  //   name: 'Types',
-  //   props:['xxx'],
-  //   data() {
-  //     return {
-  //       type: '-' // "-"代表支出，"+"代表收入
-  //     }
-  //   },
-  //   mounted(){
-  //     console.log(this.xxx)
-  //   },
-  //   methods: {
-  //     selectType(type) { // type只能是 - 或 +
-  //       if (type !== '-' && type !== '+') {
-  //         throw new Error('type is unknown')
-  //       }
-  //       this.type = type
-  //     }
-  //   }
-  // };
 </script>
 
 <style lang="scss" scoped>

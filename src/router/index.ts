@@ -4,13 +4,14 @@ import Money from '@/views/Money.vue';
 import Labels from '@/views/Labels.vue';
 import Statistics from '@/views/Statistics.vue';
 import NotFound from '@/views/NotFound.vue';
+import EditLabel from '@/views/EditLabel.vue';
 
 Vue.use(VueRouter);
 
 const routes = [
   {
-    path:'/',
-    redirect:'/money' // 默认路径，redirect 是重定向 到/money
+    path: '/',
+    redirect: '/money' // 默认路径，redirect 是重定向 到/money
   },
   {
     path: '/money',
@@ -25,8 +26,12 @@ const routes = [
     component: Statistics
   },
   {
-    path:'*',
-    component:NotFound
+    path: '/labels/edit',
+    component: EditLabel
+  },
+  {
+    path: '*',
+    component: NotFound
   },
 ];
 

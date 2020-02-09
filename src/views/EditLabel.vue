@@ -6,7 +6,10 @@
             <span class="rightIcon"></span>
         </div>
         <div class="form-wrapper">
-            <FromItem field-name="标签名" placeholder="请输入标签名"/>
+            <FromItem :value="tag.name"
+                      field-name="标签名"
+                      placeholder="请输入标签名"
+            />
         </div>
         <div class="button-wrapper">
             <Button>删除标签</Button>
@@ -22,16 +25,18 @@
   import Button from '@/components/Button.vue';
 
   @Component({
-    components: {Button, FromItem: FromItem}
+    components: {Button, FromItem}
   })
   export default class EditLabel extends Vue {
+    tag?: { id: string, name: string } = undefined;
+
     created() {
       const id = this.$route.params.id;
       tagListModel.fetch();
       const tags = tagListModel.data;
       const tag = tags.filter(t => t.id === id)[0];
       if (tag) {
-        console.log(tag);
+        this.tag = tag;
       } else {
         this.$router.replace('/404');
       }
@@ -42,6 +47,7 @@
 
 <style lang="scss" scoped>
     @import "~@/assets/style/helper.scss";
+
     .navBar {
         text-align: center;
         font-size: 16px;
@@ -50,25 +56,30 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
+
         > .leftIcon {
-            width:24px;
+            width: 24px;
             height: 24px;
         }
+
         > .title {
         }
-        > .rightIcon{
-            width:24px;
+
+        > .rightIcon {
+            width: 24px;
             height: 24px;
         }
     }
-    .form-wrapper{
+
+    .form-wrapper {
         background: white;
         margin-top: 8px;
-        box-shadow:inset 0 -3px 3px -3px $color-shadow;
+        box-shadow: inset 0 -3px 3px -3px $color-shadow;
     }
-    .button-wrapper{
+
+    .button-wrapper {
         text-align: center;
-        padding:16px;
+        padding: 16px;
         margin-top: 44-16px;
     }
 </style>

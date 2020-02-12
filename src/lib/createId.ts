@@ -6,4 +6,6 @@ function createId() {
 
 }
 
+window.localStorage.setItem('_idMax', id.toString());
+
 export default createId;

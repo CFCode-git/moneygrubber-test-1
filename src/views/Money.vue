@@ -41,15 +41,12 @@
     }
 
     saveRecord() {
-      // 深拷贝一下
-      const record2: RecordItem = recordListModel.clone(this.record);
-      record2.createAt = new Date();
-      this.recordList.push(record2);
+      recordListModel.create(this.record)
     }
 
     @Watch('recordList')
     onRecordChange() {
-      recordListModel.save(this.recordList);
+      recordListModel.save();
 
     }
   }

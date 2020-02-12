@@ -35,6 +35,9 @@
           window.alert('重复');
         } else if (message === 'success') {
           window.alert('添加成功');
+          setTimeout(() => {
+            document.querySelector('.tags')!.scrollTop = document.querySelector('.tags')!.scrollHeight;
+          }, 0);
         }
       }
     }
@@ -42,10 +45,15 @@
 </script>
 
 <style lang="scss" scoped>
+    ::-webkit-scrollbar{
+        display:none;
+    }
     .tags {
         background: white;
         font-size: 16px;
         padding-left: 16px;
+        height: 80%;
+        overflow: scroll;
 
         > .tag {
             min-height: 44px;

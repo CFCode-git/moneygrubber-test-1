@@ -24,7 +24,7 @@
 
 
   @Component({
-    components: {Tabs, Tags, FromItem, Types, NumberPad},
+    components: {Tabs, Tags, FromItem, NumberPad},
   })
 
   export default class Money extends Vue {

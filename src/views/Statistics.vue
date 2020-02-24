@@ -18,7 +18,8 @@
       </li>
     </ol>
     <div v-else class="noResult">
-      目前没有相关记录
+      <span class="noResult-message">还没有记录哦，赶紧记一笔吧~</span>
+      <icon class="noResult-icon" name="nothing"/>
     </div>
   </Layout>
 </template>
@@ -101,9 +102,20 @@
 </script>
 
 <style lang="scss" scoped>
+
   .noResult {
     padding: 16px;
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    &-message{
+      padding:30px;
+    }
+    .noResult-icon {
+      width: 128px;
+      height: 128px;
+    }
   }
 
   ::v-deep {

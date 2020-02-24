@@ -4,7 +4,7 @@
             <span class="name">{{this.fieldName}}</span>
             <input type="text"
                    :value="value"
-                   @input="onValueChanged($event.target.value)"
+                   @change="onValueChanged($event.target.value)"
                    :placeholder="this.placeholder">
         </label>
     </div>
@@ -12,7 +12,7 @@
 
 <script lang="ts">
   import Vue from 'vue';
-  import {Component, Prop, Watch} from 'vue-property-decorator';
+  import {Component, Prop} from 'vue-property-decorator';
 
   @Component
   export default class FromItem extends Vue {

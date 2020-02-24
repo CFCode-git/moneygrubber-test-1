@@ -26,6 +26,8 @@ const store = new Vuex.Store({
         const names = state.tagList.map(item => item.name);
         if (names.indexOf(name) >= 0) {
           window.alert('标签名重复了');
+        } else if (name === null || name === '') {
+          return window.alert('标签名不能为空');
         } else {
           const tag = state.tagList.filter(item => item.id === id)[0];
           tag.name = name;
@@ -53,6 +55,10 @@ const store = new Vuex.Store({
       state.recordList = JSON.parse(window.localStorage.getItem('recordList') || '[]') as RecordItem[];
     },
     createRecord(state, record: RecordItem) {
+      if (record.amount === 0) {
+        state.createRecordError = new Error('Missing amount input!');
+        return window.alert('请输入金额');
+      }
       const record2 = clone(record);
       record2.createAt = new Date().toISOString();
       // this.recordList?.push(record2);
